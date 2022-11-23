@@ -85,6 +85,67 @@ $(document).ready(function () {
         ]
   });
 
+  $('.efficiency-slider').slick({
+      infinite: false,  
+      slidesToShow: 1,
+      dots: false,
+      fade: true,
+      prevArrow: $('.efficiency-nav__arrow-prev'),
+      nextArrow: $('.efficiency-nav__arrow-next'),
+  });
+
+  $('.results-promote-slider').slick({
+      infinite: false,  
+      slidesToShow: 1,
+      dots: false,
+      fade: true,
+      prevArrow: $('.results-promote__arrow--prev'),
+      nextArrow: $('.results-promote__arrow--next'),
+  });
+
+  $('.results-promote__arrow--prev').on('click', function() {
+    $('.results-promote-slider').slick("slickPrev");
+    return false;
+  })
+  $('.results-promote__arrow--next').on('click', function() {
+    $('.results-promote-slider').slick("slickNext");
+    return false;
+  })
+
+  $('.sites-slider').slick({
+      infinite: false,  
+      slidesToShow: 1,
+      dots: true,
+      fade: true,
+      prevArrow: $('.sites-slider-arrow--prev'),
+      nextArrow: $('.sites-slider-arrow--next'),
+  });
+
+  $('.affairs-slider').slick({
+      infinite: false,  
+      slidesToShow: 1,
+      dots: true,
+      fade: true,
+      prevArrow: $('.affairs-slider-arrow--prev'),
+      nextArrow: $('.affairs-slider-arrow--next'),
+  });
+
+  $('.strategy-promotion-slider').slick({
+      infinite: false,  
+      slidesToShow: 1,
+      dots: true,
+      fade: true,
+  });
+
+  let efficiency_count = $('.efficiency-slider .slick-slide').length;
+  $('.efficiency .counter-slider-all span').text(efficiency_count);
+
+  $('.efficiency-slider').on('afterChange', function(event, slick, currentSlide) {
+    let counter_slide = currentSlide + 1;
+    $('.efficiency .counter-slider-now').text(counter_slide);
+  });
+
+
   $('.crucial-slider').slick({
       infinite: false,  
       slidesToShow: 4,
@@ -109,8 +170,24 @@ $(document).ready(function () {
         ]
   });
 
+  if ($(window).width() <= 765) {
+      $('.give-row').slick({
+          infinite: false,  
+          slidesToShow: 1,
+          dots: false,
+          arrows: false,
+          variableWidth: true
+      });
+
+  }
   if ($(window).width() <= 1160) {
-      
+    $('.contacts-certificates').slick({
+        infinite: false,  
+        slidesToShow: 1,
+        dots: false,
+        arrows: false,
+        variableWidth: true
+    });
   }
   if ($(window).width() <= 1160 && $(window).width() > 765) {
     $('.clients-row').slick({
@@ -127,5 +204,6 @@ $(document).ready(function () {
         arrows: false,
         variableWidth: true
     });
+    
   }
 })
